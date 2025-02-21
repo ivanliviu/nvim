@@ -1,5 +1,5 @@
 call_parentheses = 'None'
-column_width = 90
+column_width = 80
 indent_type = 'Tabs'
 indent_width = 4
 line_endings = 'Unix'
