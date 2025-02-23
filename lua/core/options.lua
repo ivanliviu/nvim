@@ -4,7 +4,6 @@ vim.g.markdown_recommended_style = 0
 vim.g.python_recommended_style = 0
 
 vim.opt.breakindent = true
-vim.opt.colorcolumn = _G.arista and '86' or '81'
 vim.opt.cursorline = true
 vim.opt.expandtab = _G.arista
 vim.opt.ignorecase = true
@@ -13,6 +12,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = 'a'
 vim.opt.number = true
+vim.opt.numberwidth = 6
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 999
 vim.opt.shiftwidth = _G.arista and 3 or 4

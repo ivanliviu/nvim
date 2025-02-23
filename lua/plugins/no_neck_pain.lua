@@ -1,9 +1,8 @@
-return {
+return { -----------------------------------------------------------------------
 	'shortcuts/no-neck-pain.nvim',
 	config = true,
 	opts = {
-		-- 80 + extra, TODO: fix 79 for 1000+ line docs as function?
-		width = _G.arista and 93 or 88,
+		width = _G.arista and 94 or 89,
 		autocmds = {
 			enableOnVimEnter = true,
 			skipEnteringNoNeckPainBuffer = true,

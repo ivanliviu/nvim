@@ -26,9 +26,7 @@ return {
 	},
 	config = function()
 		-- local workspaces = require 'workspaces'
-		-- only once:
 		-- workspaces.add('~/Documents', 'home')
-		-- workspaces.add('~/Documents/vault/git/dracula', 'dracula')
 		-- workspaces.add('~/Documents/vault/git/neovim', 'neovim')
 		-- workspaces.add('~/Documents/vault/git/sahbox', 'sahbox')
 		-- workspaces.add('~/Documents/vault/git/toolkit', 'toolkit')

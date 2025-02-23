@@ -1,3 +1,4 @@
+nvim <dir> => pwd = dir
 culoare mod din lualine pe cursor, tabline
 telescope should include . files, maybe not build etc.
 bind terminal to its window / buffers always in window 1

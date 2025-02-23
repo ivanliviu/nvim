@@ -29,7 +29,6 @@ require('lazy').setup {
 	require 'plugins.web_devicons',
 	----------------------------------------------------------------------------
 	require 'plugins.autopairs',
-	require 'plugins.dracula',
 	require 'plugins.lualine',
 	require 'plugins.todo_comments',
 	require 'plugins.workspaces',
