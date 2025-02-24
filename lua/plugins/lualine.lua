@@ -7,7 +7,7 @@ return {
 	opts = {
 		options = {
 			globalstatus = true,
-			theme = { -- for tabline/cursor?
+			theme = {
 				normal = {
 					a = { fg = colors.black, bg = colors.purple, gui = 'bold' },
 					b = { fg = colors.purple, bg = colors.black },

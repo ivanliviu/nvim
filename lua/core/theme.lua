@@ -417,16 +417,6 @@ local groups = {
 	MiniIndentscopeSymbol = { fg = '#B5629B' },
 	MiniIndentscopeSymbolOff = { fg = '#B5629B' },
 
-	-- mini.icons
-	MiniIconsAzure = { fg = colors.bright_cyan },
-	MiniIconsBlue = { fg = colors.bright_blue },
-	MiniIconsCyan = { fg = colors.cyan },
-	MiniIconsGrey = { fg = colors.white },
-	MiniIconsOrange = { fg = colors.orange },
-	MiniIconsPurple = { fg = colors.purple },
-	MiniIconsRed = { fg = colors.red },
-	MiniIconsYellow = { fg = colors.yellow },
-
 	-- goolord/alpha-nvim
 	AlphaHeader = { fg = colors.purple },
 	AlphaButtons = { fg = colors.cyan },
@@ -468,16 +458,16 @@ local groups = {
 	DapStoppedLine = { default = true, link = 'Visual' },
 	DapUIWinSelect = { fg = colors.bright_cyan, bold = true },
 
-	-- Notify
-	NotifyInfoIcon = { fg = colors.green },
-	NotifyInfoTitle = { fg = colors.green },
-	NotifyInfoBorder = { fg = '#2C453F' },
-	NotifyErrorIcon = { fg = colors.red },
-	NotifyErrorTitle = { fg = colors.red },
-	NotifyErrorBorder = { fg = '#DD6E6B' },
-	NotifyWarnIcon = { fg = colors.orange },
-	NotifyWarnTitle = { fg = colors.orange },
-	NotifyWarnBorder = { fg = '#785637' },
+	-- -- Notify
+	-- NotifyInfoIcon = { fg = colors.green },
+	-- NotifyInfoTitle = { fg = colors.green },
+	-- NotifyInfoBorder = { fg = '#2C453F' },
+	-- NotifyErrorIcon = { fg = colors.red },
+	-- NotifyErrorTitle = { fg = colors.red },
+	-- NotifyErrorBorder = { fg = '#DD6E6B' },
+	-- NotifyWarnIcon = { fg = colors.orange },
+	-- NotifyWarnTitle = { fg = colors.orange },
+	-- NotifyWarnBorder = { fg = '#785637' },
 }
 
 for group, setting in pairs(groups) do

@@ -2,6 +2,7 @@ return { -----------------------------------------------------------------------
 	'shortcuts/no-neck-pain.nvim',
 	config = true,
 	opts = {
+		minSideBufferWidth = 0,
 		width = _G.arista and 94 or 89,
 		autocmds = {
 			enableOnVimEnter = true,
