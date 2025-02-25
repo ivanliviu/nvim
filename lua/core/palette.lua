@@ -1,32 +1,28 @@
+-- update bazecor
+-- use colors based on distance from purple and eachother:
+-- chartreuse > yellow/green > orange/spring_green >
+-- > red/cyan > rose/azure > magenta/blue
 return {
-	bg = '#1e1c24', -- 255, 1/8, 1/8
-	fg = '#edfbc3', -- 75, 7/8, 7/8
-	selection = '#3c3848', -- 255, 1/8, 1/4
-	comment = '#bbb8c8', -- 255, 1/8, 3/4
-	red = '#ff8080', -- 0, 1, 3/4
-	orange = '#ffc080', -- 30, 1, 3/4
-	yellow = '#ffff80', -- 60, 1, 3/4
-	green = '#80ff80', -- 120, 1, 3/4
-	purple = '#a080ff', -- 255, 1, 3/4
-	cyan = '#80ffff', -- 180, 1, 3/4
-	pink = '#ff80c0', -- 330, 1, 3/4
-	bright_red = '#ffa0a0', -- 0, 1, 4/5
-	bright_green = '#a0ffa0', -- 120, 1, 4/5
-	bright_yellow = '#ffffa0', -- 60, 1, 4/5
-	bright_blue = '#b8a0ff', -- 255, 1, 4/5
-	bright_magenta = '#ffa0d0', -- 330, 1, 4/5
-	bright_cyan = '#a0ffff', -- 180, 1, 4/5
-	bright_white = '#ffffff', -- 0, 1, 1
-	-- menu = "#21222C",
+	fg = '#ebf7c7', -- 75, 3/4, 7/8
+	bg = '#1c1828', -- 255, 1/4, 1/8
+	black = '#0e0c14', -- 255, 1/4, 1/16
+	white = '#edebf3', -- 255, 1/4, 15/16
+	selection = '#383050', -- 255, 1/8, 1/4
+	comment = '#b7afcf', -- 255, 1/4, 3/4
 	menu = '#2d2a36', -- 255, 1/8, 3/16
-	-- visual = "#3E4452",
 	visual = '#3c3848', -- 255, 1/8, 1/4
-	-- gutter_fg = "#4B5263",
-	gutter_fg = '#2d2a36', -- 255, 1/8, 3/16
-	-- nontext = "#3B4048",
 	nontext = '#3c3848', -- 255, 1/8, 1/4
-	-- white = "#ABB2BF",
-	white = '#e7dfff', -- 255, 1, 15/16
-	-- black = "#191a21",
-	black = '#080020', -- 255, 1, 1/16
+
+	violet = '#9f80ff', -- 255, 1, 3/4
+	magenta = '#df80ff', -- 285, 3/4, 3/4
+	rose = '#ff80df', -- 315, 1, 3/4
+	red = '#ff809f', -- 345, 1, 3/4
+	orange = '#ff9f80', -- 15, 1, 3/4
+	yellow = '#ffdf80', -- 45, 1, 3/4
+	chartreuse = '#dfff80', -- 75, 1, 3/4
+	green = '#9fff80', -- 105, 1, 3/4
+	spring_green = '#80ff9f', -- 135, 1, 3/4
+	cyan = '#80ffdf', -- 165, 1, 3/4
+	azure = '#80dfff', -- 195, 1, 3/4
+	blue = '#809fff', -- 225, 1, 3/4
 }

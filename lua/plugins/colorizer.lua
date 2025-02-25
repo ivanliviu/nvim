@@ -1,4 +1,4 @@
 return {
 	'catgoose/nvim-colorizer.lua',
-	opts = {},
+	opts = {}, -- disable for text
 }

@@ -42,6 +42,5 @@ require('lazy').setup {
 	require 'plugins.cmp', -- chosen
 	require 'plugins.mini', -- chosen...
 	require 'plugins.treesitter', -- chosen
-	'rcarriga/nvim-notify',
 	not _G.arista and require 'plugins.trim' or nil,
 }

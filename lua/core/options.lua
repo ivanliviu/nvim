@@ -12,7 +12,10 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = 'a'
 vim.opt.number = true
-vim.opt.numberwidth = 6
+vim.opt.numberwidth = 4 -- 5 at most, dynamic depending on file size
+-- also depending on vim width (no-neck-pain takes up even number of spaces)
+-- st should be small enough to fix exactly two max size buffers
+-- test max size split, max size - 1, max size - 2, etc.?
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 999
 vim.opt.shiftwidth = _G.arista and 3 or 4

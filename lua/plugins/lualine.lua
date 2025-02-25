@@ -9,8 +9,8 @@ return {
 			globalstatus = true,
 			theme = {
 				normal = {
-					a = { fg = colors.black, bg = colors.purple, gui = 'bold' },
-					b = { fg = colors.purple, bg = colors.black },
+					a = { fg = colors.black, bg = colors.violet, gui = 'bold' },
+					b = { fg = colors.violet, bg = colors.black },
 					c = { fg = colors.white, bg = colors.black },
 				},
 				command = {
@@ -18,8 +18,8 @@ return {
 					b = { fg = colors.cyan, bg = colors.black },
 				},
 				visual = {
-					a = { fg = colors.black, bg = colors.pink, gui = 'bold' },
-					b = { fg = colors.pink, bg = colors.black },
+					a = { fg = colors.black, bg = colors.rose, gui = 'bold' },
+					b = { fg = colors.rose, bg = colors.black },
 				},
 				inactive = {
 					a = { fg = colors.white, bg = colors.visual, gui = 'bold' },
