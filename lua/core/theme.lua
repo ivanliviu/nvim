@@ -1,116 +1,166 @@
-local colors = require 'core/palette'
+-- MISSING:
+-- Core Vim/Neovim groups
+-- NormalNC, NormalSB (alternate “Normal” for inactive splits/status bars)
+-- CursorIM, TermCursor, TermCursorNC (cursor highlight variants)
+-- WinBar, WinBarNC (top-of-window status lines in recent Neovim)
+-- ModeMsg, MoreMsg, Substitute, Ignore, Whitespace
+-- MsgArea, MsgSeparator
+
+-- Additional TreeSitter captures
+-- @punctuation.special (e.g. backticks in Markdown, special characters)
+-- @text.title, @text.reference, @text.environment, @text.environment.name,
+--     @text.uri
+-- @text.math, @text.note, @text.warning, @text.danger
+-- @lsp.typemod.* captures (e.g. @lsp.typemod.readonly,
+--     @lsp.typemod.defaultLibrary)
+
+-- Plugin-specific groups
+-- WhichKey plugin highlights (WhichKey, WhichKeyDesc, WhichKeyGroup, etc.)
+-- NvimTree or NeoTree highlights (for file explorer plugins)
+-- Notify plugin (notification popups)
+-- Hop/Flash plugins (motion guides)
+-- IlluminatedWord (word under cursor highlight)
+-- Fidget or LspProgress (LSP progress indicators)
+-- Trouble or SymbolsOutline groups
+
+local p = require 'core/palette'
+local colors = p
+
+local black = p.gradient[1] -- TODO: blend
+local muted = p.gradient[2]
+local soft = p.gradient[3] -- TODO; 5 chars?
+local clear = p.gradient[4]
+local white = p.gradient[5]
+
+local default = p.colors[1] -- TODO: main
+local fg = p.fg
+
+local R = '#ff0000'
 
 local groups = {
-	Normal = { fg = colors.fg, bg = colors.bg },
-	NormalFloat = { fg = colors.fg, bg = colors.bg },
-	Comment = { fg = colors.comment, italic = true },
-	Constant = { fg = colors.yellow },
-	String = { fg = colors.yellow },
-	Character = { fg = colors.green },
-	Number = { fg = colors.orange },
-	Boolean = { fg = colors.cyan },
+	Character = { fg = p.colors[7] },
+	Comment = { fg = clear, italic = true },
+	Constant = { fg = p.colors[7] },
+	Normal = { fg = white, bg = nil },
+	NormalFloat = { fg = white, bg = muted },
+	Number = { fg = p.colors[7] },
+	String = { fg = p.colors[7] },
+	----------------------------------------------------------------------------
+	Boolean = { fg = R },
 	Float = { fg = colors.orange },
-	FloatBorder = { fg = colors.white },
-	Operator = { fg = colors.chartreuse },
+	FloatBorder = { fg = white },
+	Operator = { fg = default },
 	Keyword = { fg = colors.cyan },
 	Keywords = { fg = colors.cyan },
 	Identifier = { fg = colors.cyan },
 	Function = { fg = colors.yellow },
-	Statement = { fg = colors.chartreuse },
-	Conditional = { fg = colors.magenta },
-	Repeat = { fg = colors.magenta },
+	Statement = { fg = default },
+	Conditional = { fg = colors.rose },
+	Repeat = { fg = colors.rose },
 	Label = { fg = colors.cyan },
-	Exception = { fg = colors.chartreuse },
+	Exception = { fg = default },
 	PreProc = { fg = colors.yellow },
-	Include = { fg = colors.chartreuse },
-	Define = { fg = colors.chartreuse },
+	Include = { fg = default },
+	Define = { fg = default },
 	Title = { fg = colors.cyan },
-	Macro = { fg = colors.chartreuse },
+	Macro = { fg = default },
 	PreCondit = { fg = colors.cyan },
 	Type = { fg = colors.cyan },
-	StorageClass = { fg = colors.magenta },
+	StorageClass = { fg = colors.rose },
 	Structure = { fg = colors.yellow },
 	TypeDef = { fg = colors.yellow },
 	Special = { fg = colors.green, italic = true },
-	SpecialComment = { fg = colors.comment, italic = true },
-	Error = { fg = colors.rose },
-	Todo = { fg = colors.chartreuse, bold = true, italic = true },
+	SpecialComment = { fg = clear, italic = true },
+	Error = { fg = colors.magenta },
+	Todo = { fg = default, bold = true, italic = true },
 	Underlined = { fg = colors.cyan, underline = true },
 
 	Cursor = { reverse = true },
-	CursorLineNr = { fg = colors.fg, bold = true },
+	CursorLineNr = { fg = white, bold = true },
 
-	SignColumn = { bg = colors.bg },
+	SignColumn = { bg = nil },
 
-	Conceal = { fg = colors.comment },
-	CursorColumn = { bg = colors.black },
-	CursorLine = { bg = colors.selection },
-	ColorColumn = { bg = colors.selection },
+	Conceal = { fg = colors.gradient[2] },
+	CursorColumn = { bg = black },
+	CursorLine = { bg = colors.gradient[2] },
+	ColorColumn = { bg = colors.gradient[2] },
 
-	StatusLine = { fg = colors.white, bg = colors.black },
-	StatusLineNC = { fg = colors.comment },
-	StatusLineTerm = { fg = colors.white, bg = colors.black },
-	StatusLineTermNC = { fg = colors.comment },
+	StatusLine = { fg = white, bg = black },
+	StatusLineNC = { fg = colors.gradient[2] },
+	StatusLineTerm = { fg = white, bg = black },
+	StatusLineTermNC = { fg = colors.gradient[2] },
 
 	Directory = { fg = colors.cyan },
-	DiffAdd = { fg = colors.bg, bg = colors.green },
+	DiffAdd = { fg = muted, bg = colors.green },
 	DiffChange = { fg = colors.orange },
 	DiffDelete = { fg = colors.red },
-	DiffText = { fg = colors.comment },
+	DiffText = { fg = colors.gradient[2] },
 
 	ErrorMsg = { fg = colors.rose },
-	VertSplit = { fg = colors.black },
-	WinSeparator = { fg = colors.violet },
-	Folded = { fg = colors.comment },
+	VertSplit = { fg = black },
+	WinSeparator = { fg = black },
+	Folded = { fg = colors.gradient[2] },
 	FoldColumn = {},
-	Search = { fg = colors.black, bg = colors.orange },
-	IncSearch = { fg = colors.orange, bg = colors.comment },
-	LineNr = { fg = colors.comment },
-	MatchParen = { fg = colors.fg, underline = true },
-	NonText = { fg = colors.nontext },
-	Pmenu = { fg = colors.white, bg = colors.menu },
-	PmenuSel = { fg = colors.white, bg = colors.selection },
-	PmenuSbar = { bg = colors.bg },
-	PmenuThumb = { bg = colors.selection },
+	Search = { fg = black, bg = colors.orange },
+	IncSearch = { fg = colors.orange, bg = colors.gradient[2] },
+	LineNr = { fg = colors.gradient[2] },
+	MatchParen = { fg = fg, underline = true },
+	NonText = { fg = colors.gradient[2] },
+	Pmenu = { fg = white, bg = black },
+	PmenuSel = { fg = white, bg = colors.gradient[3] },
+	PmenuSbar = { bg = muted },
+	PmenuThumb = { bg = colors.gradient[3] },
 
-	Question = { fg = colors.chartreuse },
-	QuickFixLine = { fg = colors.black, bg = colors.yellow },
-	SpecialKey = { fg = colors.nontext },
+	Question = { fg = colors.red },
+	QuickFixLine = { fg = black, bg = colors.yellow },
+	SpecialKey = { fg = colors.gradient[2] },
 
 	SpellBad = { fg = colors.rose, underline = true },
 	SpellCap = { fg = colors.yellow },
 	SpellLocal = { fg = colors.yellow },
 	SpellRare = { fg = colors.yellow },
 
-	TabLine = { fg = colors.comment },
-	TabLineSel = { fg = colors.white },
-	TabLineFill = { bg = colors.bg },
-	Terminal = { fg = colors.white, bg = colors.black },
-	Visual = { bg = colors.visual },
-	VisualNOS = { fg = colors.visual },
+	TabLine = { fg = colors.gradient[2] },
+	TabLineSel = { fg = white },
+	TabLineFill = { bg = muted },
+	Terminal = { fg = white, bg = black },
+	Visual = { bg = colors.gradient[3] },
+	VisualNOS = { fg = colors.gradient[3] },
 	WarningMsg = { fg = colors.yellow },
-	WildMenu = { fg = colors.black, bg = colors.white },
+	WildMenu = { fg = black, bg = white },
 
-	EndOfBuffer = { fg = colors.bg },
+	EndOfBuffer = { fg = black },
+
+	-- Notify
+	NotifyInfoIcon = { fg = colors.green },
+	NotifyInfoTitle = { fg = colors.green },
+	NotifyInfoBorder = { fg = '#2C453F' },
+	NotifyErrorIcon = { fg = colors.red },
+	NotifyErrorTitle = { fg = colors.red },
+	NotifyErrorBorder = { fg = '#DD6E6B' },
+	NotifyWarnIcon = { fg = colors.orange },
+	NotifyWarnTitle = { fg = colors.orange },
+	NotifyWarnBorder = { fg = '#785637' },
+	NotifyBackground = { fg = '#ff0000', bg = '#ff0000' },
 
 	-- TreeSitter
-	['@error'] = { fg = colors.rose },
-	['@punctuation.delimiter'] = { fg = colors.fg },
-	['@punctuation.bracket'] = { fg = colors.fg },
+	['@error'] = { fg = colors.magenta },
+	['@punctuation.delimiter'] = { fg = fg },
+	['@punctuation.bracket'] = { fg = fg },
 	['@markup.list'] = { fg = colors.cyan },
 
-	['@constant'] = { fg = colors.chartreuse },
-	['@constant.builtin'] = { fg = colors.chartreuse },
-	['@markup.link.label.symbol'] = { fg = colors.chartreuse },
+	['@constant'] = { fg = default },
+	['@constant.builtin'] = { fg = default },
+	['@markup.link.label.symbol'] = { fg = default },
 
 	['@constant.macro'] = { fg = colors.cyan },
 	['@string.regexp'] = { fg = colors.red },
 	['@string'] = { fg = colors.yellow },
 	['@string.escape'] = { fg = colors.cyan },
-	['@string.special.symbol'] = { fg = colors.chartreuse },
+	['@string.special.symbol'] = { fg = default },
 	['@character'] = { fg = colors.green },
-	['@number'] = { fg = colors.chartreuse },
-	['@boolean'] = { fg = colors.chartreuse },
+	['@number'] = { fg = default },
+	['@boolean'] = { fg = default },
 	['@number.float'] = { fg = colors.green },
 	['@annotation'] = { fg = colors.yellow },
 	['@attribute'] = { fg = colors.cyan },
@@ -122,8 +172,8 @@ local groups = {
 	['@variable.parameter'] = { fg = colors.orange },
 	['@variable.parameter.reference'] = { fg = colors.orange },
 	['@function.method'] = { fg = colors.green },
-	['@variable.member'] = { fg = colors.orange },
-	['@property'] = { fg = colors.chartreuse },
+	['@variable.member'] = { fg = colors.yellow },
+	['@property'] = { fg = colors.blue },
 	['@constructor'] = { fg = colors.cyan },
 
 	['@keyword.conditional'] = { fg = colors.magenta },
@@ -135,15 +185,15 @@ local groups = {
 	['@keyword.function.ruby'] = { fg = colors.magenta },
 	['@keyword.operator'] = { fg = colors.magenta },
 	['@operator'] = { fg = colors.magenta },
-	['@keyword.exception'] = { fg = colors.chartreuse },
+	['@keyword.exception'] = { fg = colors.red },
 	['@type'] = { fg = colors.azure },
 	['@type.builtin'] = { fg = colors.cyan, italic = true },
 	['@type.qualifier'] = { fg = colors.magenta },
-	['@structure'] = { fg = colors.chartreuse },
+	['@structure'] = { fg = colors.red },
 	['@keyword.include'] = { fg = colors.magenta },
 
-	['@variable'] = { fg = colors.fg },
-	['@variable.builtin'] = { fg = colors.chartreuse },
+	['@variable'] = { fg = fg },
+	['@variable.builtin'] = { fg = colors.red },
 
 	['@markup'] = { fg = colors.orange },
 	['@markup.strong'] = { fg = colors.orange, bold = true },
@@ -162,7 +212,7 @@ local groups = {
 	['@class'] = { fg = colors.cyan },
 	['@struct'] = { fg = colors.cyan },
 	['@enum'] = { fg = colors.cyan },
-	['@enumMember'] = { fg = colors.chartreuse },
+	['@enumMember'] = { fg = colors.red },
 	['@event'] = { fg = colors.cyan },
 	['@interface'] = { fg = colors.cyan },
 	['@modifier'] = { fg = colors.cyan },
@@ -170,21 +220,21 @@ local groups = {
 	['@typeParameter'] = { fg = colors.cyan },
 	['@decorator'] = { fg = colors.cyan },
 
-	-- LSP Semantic (0.9+)
+	-- -- LSP Semantic (0.9+)
 	['@lsp.type.class'] = { fg = colors.cyan },
 	['@lsp.type.enum'] = { fg = colors.cyan },
 	['@lsp.type.decorator'] = { fg = colors.green },
-	['@lsp.type.enumMember'] = { fg = colors.chartreuse },
+	['@lsp.type.enumMember'] = { fg = colors.red },
 	['@lsp.type.function'] = { fg = colors.green },
 	['@lsp.type.interface'] = { fg = colors.cyan },
 	['@lsp.type.macro'] = { fg = colors.cyan },
 	['@lsp.type.method'] = { fg = colors.green },
 	['@lsp.type.namespace'] = { fg = colors.orange },
 	['@lsp.type.parameter'] = { fg = colors.orange },
-	['@lsp.type.property'] = { fg = colors.chartreuse },
+	['@lsp.type.property'] = { fg = colors.blue },
 	['@lsp.type.struct'] = { fg = colors.cyan },
 	['@lsp.type.type'] = { fg = colors.azure },
-	['@lsp.type.variable'] = { fg = colors.fg },
+	['@lsp.type.variable'] = { fg = fg },
 
 	-- HTML
 	htmlArg = { fg = colors.green },
@@ -196,14 +246,14 @@ local groups = {
 	htmlH4 = { fg = colors.magenta },
 	htmlH5 = { fg = colors.magenta },
 	htmlH6 = { fg = colors.magenta },
-	htmlItalic = { fg = colors.chartreuse, italic = true },
-	htmlLink = { fg = colors.chartreuse, underline = true },
+	htmlItalic = { fg = colors.red, italic = true },
+	htmlLink = { fg = colors.red, underline = true },
 	htmlSpecialChar = { fg = colors.yellow },
 	htmlSpecialTagName = { fg = colors.cyan },
 	htmlTag = { fg = colors.cyan },
 	htmlTagN = { fg = colors.cyan },
 	htmlTagName = { fg = colors.cyan },
-	htmlTitle = { fg = colors.white },
+	htmlTitle = { fg = white },
 
 	-- Markdown
 	markdownBlockquote = { fg = colors.yellow, italic = true },
@@ -218,16 +268,16 @@ local groups = {
 	markdownH5 = { link = 'rainbow5' },
 	markdownH6 = { link = 'rainbow6' },
 	markdownHeadingDelimiter = { fg = colors.red },
-	markdownHeadingRule = { fg = colors.comment },
-	markdownId = { fg = colors.chartreuse },
+	markdownHeadingRule = { fg = colors.gradient[2] },
+	markdownId = { fg = colors.red },
 	markdownIdDeclaration = { fg = colors.cyan },
-	markdownIdDelimiter = { fg = colors.chartreuse },
+	markdownIdDelimiter = { fg = colors.red },
 	markdownItalic = { fg = colors.yellow, italic = true },
-	markdownLinkDelimiter = { fg = colors.chartreuse },
+	markdownLinkDelimiter = { fg = colors.red },
 	markdownLinkText = { fg = colors.magenta },
 	markdownListMarker = { fg = colors.cyan },
 	markdownOrderedListMarker = { fg = colors.red },
-	markdownRule = { fg = colors.comment },
+	markdownRule = { fg = colors.gradient[2] },
 	['@markup.heading.1.markdown'] = { link = 'rainbowcol1' },
 	['@markup.heading.2.markdown'] = { link = 'rainbowcol2' },
 	['@markup.heading.3.markdown'] = { link = 'rainbowcol3' },
@@ -239,31 +289,31 @@ local groups = {
 	diffAdded = { fg = colors.green },
 	diffRemoved = { fg = colors.red },
 	diffFileId = { fg = colors.yellow, bold = true, reverse = true },
-	diffFile = { fg = colors.nontext },
+	diffFile = { fg = colors.gradient[2] },
 	diffNewFile = { fg = colors.green },
 	diffOldFile = { fg = colors.red },
 
-	debugPc = { bg = colors.menu },
+	debugPc = { bg = black },
 	debugBreakpoint = { fg = colors.red, reverse = true },
 
 	-- Git Signs
-	GitSignsAdd = { fg = colors.spring_green },
-	GitSignsChange = { fg = colors.cyan },
-	GitSignsDelete = { fg = colors.rose },
-	GitSignsAddLn = { fg = colors.black, bg = colors.spring_green },
-	GitSignsChangeLn = { fg = colors.black, bg = colors.cyan },
-	GitSignsDeleteLn = { fg = colors.black, bg = colors.rose },
-	GitSignsCurrentLineBlame = { fg = colors.white },
+	GitSignsAdd = { fg = colors.green },
+	GitSignsChange = { fg = colors.blue },
+	GitSignsDelete = { fg = colors.red },
+	GitSignsAddLn = { fg = black, bg = colors.green },
+	GitSignsChangeLn = { fg = black, bg = colors.blue },
+	GitSignsDeleteLn = { fg = black, bg = colors.red },
+	GitSignsCurrentLineBlame = { fg = white },
 
 	-- Telescope
-	TelescopePromptBorder = { fg = colors.comment },
-	TelescopeResultsBorder = { fg = colors.comment },
-	TelescopePreviewBorder = { fg = colors.comment },
-	TelescopeSelection = { fg = colors.white, bg = colors.selection },
-	TelescopeMultiSelection = { fg = colors.chartreuse, bg = colors.selection },
-	TelescopeNormal = { fg = colors.fg, bg = colors.bg },
+	TelescopePromptBorder = { fg = colors.gradient[2] },
+	TelescopeResultsBorder = { fg = colors.gradient[2] },
+	TelescopePreviewBorder = { fg = colors.gradient[2] },
+	TelescopeSelection = { fg = colors.gradient[5], bg = colors.gradient[2] },
+	TelescopeMultiSelection = { fg = colors.red, bg = colors.gradient[2] },
+	TelescopeNormal = { fg = fg, bg = nil },
 	TelescopeMatching = { fg = colors.green },
-	TelescopePromptPrefix = { fg = colors.chartreuse },
+	TelescopePromptPrefix = { fg = colors.colors[7] },
 	TelescopeResultsDiffDelete = { fg = colors.red },
 	TelescopeResultsDiffChange = { fg = colors.cyan },
 	TelescopeResultsDiffAdd = { fg = colors.green },
@@ -305,36 +355,36 @@ local groups = {
 	LspInlayHint = { fg = '#969696', bg = '#2f3146' },
 
 	--LSP Saga
-	LspFloatWinNormal = { fg = colors.fg },
-	LspFloatWinBorder = { fg = colors.comment },
-	LspSagaHoverBorder = { fg = colors.comment },
-	LspSagaSignatureHelpBorder = { fg = colors.comment },
-	LspSagaCodeActionBorder = { fg = colors.comment },
-	LspSagaDefPreviewBorder = { fg = colors.comment },
-	LspLinesDiagBorder = { fg = colors.comment },
-	LspSagaRenameBorder = { fg = colors.comment },
-	LspSagaBorderTitle = { fg = colors.menu },
-	LSPSagaDiagnosticTruncateLine = { fg = colors.comment },
-	LspSagaDiagnosticBorder = { fg = colors.comment },
-	LspSagaShTruncateLine = { fg = colors.comment },
-	LspSagaDocTruncateLine = { fg = colors.comment },
-	LspSagaLspFinderBorder = { fg = colors.comment },
+	LspFloatWinNormal = { fg = fg },
+	LspFloatWinBorder = { fg = colors.gradient[2] },
+	LspSagaHoverBorder = { fg = colors.gradient[2] },
+	LspSagaSignatureHelpBorder = { fg = colors.gradient[2] },
+	LspSagaCodeActionBorder = { fg = colors.gradient[2] },
+	LspSagaDefPreviewBorder = { fg = colors.gradient[2] },
+	LspLinesDiagBorder = { fg = colors.gradient[2] },
+	LspSagaRenameBorder = { fg = colors.gradient[2] },
+	LspSagaBorderTitle = { fg = black },
+	LSPSagaDiagnosticTruncateLine = { fg = colors.gradient[2] },
+	LspSagaDiagnosticBorder = { fg = colors.gradient[2] },
+	LspSagaShTruncateLine = { fg = colors.gradient[2] },
+	LspSagaDocTruncateLine = { fg = colors.gradient[2] },
+	LspSagaLspFinderBorder = { fg = colors.gradient[2] },
 	CodeActionNumber = { bg = 'NONE', fg = colors.cyan },
 
 	-- IndentBlankLine
 	IndentBlanklineContextChar = { fg = colors.rose, nocombine = true },
 
 	-- Nvim compe
-	CmpItemAbbrDeprecated = { fg = colors.white, bg = colors.bg },
-	CmpItemAbbrMatch = { fg = colors.cyan, bg = colors.bg },
+	CmpItemAbbrDeprecated = { fg = white, bg = muted },
+	CmpItemAbbrMatch = { fg = colors.cyan, bg = muted },
 
 	-- Compe
 	CompeDocumentation = { link = 'Pmenu' },
 	CompeDocumentationBorder = { link = 'Pmenu' },
 
 	-- Cmp
-	CmpItemAbbr = { fg = colors.white, bg = colors.bg },
-	CmpItemKind = { fg = colors.white, bg = colors.bg },
+	CmpItemAbbr = { fg = white, bg = muted },
+	CmpItemKind = { fg = white, bg = muted },
 	CmpItemKindMethod = { link = '@function.method' },
 	CmpItemKindText = { link = '@markup' },
 	CmpItemKindFunction = { link = '@function' },
@@ -389,13 +439,13 @@ local groups = {
 	NavicIconsEvent = { link = 'CmpItemKindEvent' },
 	NavicIconsOperator = { link = 'CmpItemKindOperator' },
 	NavicIconsTypeParameter = { link = 'CmpItemKindTypeParameter' },
-	NavicText = { fg = colors.nontext },
-	NavicSeparator = { fg = colors.nontext },
+	NavicText = { fg = colors.gradient[2] },
+	NavicSeparator = { fg = colors.gradient[2] },
 
 	-- TS rainbow colors
 	rainbowcol1 = { fg = colors.red },
 	rainbowcol2 = { fg = colors.yellow },
-	rainbowcol3 = { fg = colors.chartreuse },
+	rainbowcol3 = { fg = colors.blue },
 	rainbowcol4 = { fg = colors.orange },
 	rainbowcol5 = { fg = colors.green },
 	rainbowcol6 = { fg = colors.magenta },
@@ -415,16 +465,16 @@ local groups = {
 	MiniIndentscopeSymbolOff = { fg = '#B5629B' },
 
 	-- goolord/alpha-nvim
-	AlphaHeader = { fg = colors.chartreuse },
+	AlphaHeader = { fg = colors.red },
 	AlphaButtons = { fg = colors.cyan },
 	AlphaShortcut = { fg = colors.orange },
-	AlphaFooter = { fg = colors.chartreuse, italic = true },
+	AlphaFooter = { fg = colors.red, italic = true },
 
 	-- nvimdev/dashboard-nvim
 	DashboardShortCut = { fg = colors.cyan },
-	DashboardHeader = { fg = colors.chartreuse },
-	DashboardCenter = { fg = colors.fg },
-	DashboardFooter = { fg = colors.chartreuse, italic = true },
+	DashboardHeader = { fg = colors.red },
+	DashboardCenter = { fg = fg },
+	DashboardFooter = { fg = colors.red, italic = true },
 	DashboardKey = { fg = colors.orange },
 	DashboardDesc = { fg = colors.cyan },
 	DashboardIcon = { fg = colors.cyan, bold = true },
@@ -455,6 +505,10 @@ local groups = {
 	DapStoppedLine = { default = true, link = 'Visual' },
 	DapUIWinSelect = { fg = colors.azure, bold = true },
 }
+
+for group, setting in pairs(groups) do
+	vim.api.nvim_set_hl(0, group, setting)
+end
 
 -- local groups = {
 -- 	Normal = { fg = colors.fg, bg = colors.bg },
@@ -914,7 +968,3 @@ local groups = {
 -- 	DapStoppedLine = { default = true, link = 'Visual' },
 -- 	DapUIWinSelect = { fg = colors.bright_cyan, bold = true },
 -- }
-
-for group, setting in pairs(groups) do
-	vim.api.nvim_set_hl(0, group, setting)
-end

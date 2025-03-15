@@ -28,6 +28,7 @@ return {
 		-- local workspaces = require 'workspaces'
 		-- workspaces.add('~/Documents', 'home')
 		-- workspaces.add('~/Documents/vault/git/neovim', 'neovim')
+		-- workspaces.add('~/Documents/vault/git/sah', 'sah')
 		-- workspaces.add('~/Documents/vault/git/sahbox', 'sahbox')
 		-- workspaces.add('~/Documents/vault/git/toolkit', 'toolkit')
 	end,

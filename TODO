@@ -1,4 +1,5 @@
 nvim <dir> => pwd = dir
+update bazecor, st (reproduce lua code) colors
 culoare mod din lualine pe cursor, tabline
 telescope should include . files, maybe not build etc.
 bind terminal to its window / buffers always in window 1

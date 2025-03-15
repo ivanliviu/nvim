@@ -1,47 +1,68 @@
 local colors = require 'core/palette'
 
+local black = colors.gradient[1]
+local white = colors.gradient[5]
+local normal = colors.colors[1]
+local insert = colors.colors[7]
+local command = colors.colors[4]
+local visual = colors.colors[10]
+local replace = colors.colors[9]
+local inactive = colors.gradient[2]
+
 return {
 	-- shows number of characters instead of number of columns
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = {
 		options = {
-			globalstatus = true,
+			-- globalstatus = true,
+			disabled_filetypes = { statusline = { 'no-neck-pain' } },
 			theme = {
 				normal = {
-					a = { fg = colors.black, bg = colors.violet, gui = 'bold' },
-					b = { fg = colors.violet, bg = colors.black },
-					c = { fg = colors.white, bg = colors.black },
+					a = { fg = black, bg = normal, gui = 'bold' },
+					b = { fg = normal, bg = black },
+					c = { fg = white, bg = black },
 				},
 				command = {
-					a = { fg = colors.black, bg = colors.cyan, gui = 'bold' },
-					b = { fg = colors.cyan, bg = colors.black },
+					a = { fg = black, bg = command, gui = 'bold' },
+					b = { fg = command, bg = black },
 				},
 				visual = {
-					a = { fg = colors.black, bg = colors.rose, gui = 'bold' },
-					b = { fg = colors.rose, bg = colors.black },
+					a = { fg = black, bg = visual, gui = 'bold' },
+					b = { fg = visual, bg = black },
 				},
 				inactive = {
-					a = { fg = colors.white, bg = colors.visual, gui = 'bold' },
-					b = { fg = colors.black, bg = colors.white },
+					a = { fg = white, bg = inactive, gui = 'bold' },
+					b = { fg = black, bg = white },
 				},
 				replace = {
-					a = { fg = colors.black, bg = colors.yellow, gui = 'bold' },
-					b = { fg = colors.yellow, bg = colors.black },
-					c = { fg = colors.white, bg = colors.black },
+					a = { fg = black, bg = replace, gui = 'bold' },
+					b = { fg = replace, bg = black },
+					c = { fg = white, bg = black },
 				},
 				insert = {
-					a = { fg = colors.black, bg = colors.green, gui = 'bold' },
-					b = { fg = colors.green, bg = colors.black },
-					c = { fg = colors.white, bg = colors.black },
+					a = { fg = black, bg = insert, gui = 'bold' },
+					b = { fg = insert, bg = black },
+					c = { fg = white, bg = black },
 				},
 			},
 		},
 		sections = {
-			lualine_x = { 'filetype' },
+			-- center buffer list, file name, etc?
+			-- consider consistent spacing, like with location
+			lualine_a = { 'mode' },
+			lualine_b = { 'branch', 'diff', 'diagnostics' },
+			lualine_c = { 'filename', 'filesize' },
+			lualine_x = { 'searchcount', 'selectioncount', 'filetype' },
+			lualine_y = { 'progress' },
+			lualine_z = { '%4l:%-3v' },
 		},
 		tabline = {
 			lualine_a = { 'buffers' },
+			lualine_b = {},
+			-- lualine_c = { '%=', 'buffers' },
+			lualine_x = {},
+			lualine_y = {},
 			lualine_z = { 'tabs' },
 		},
 		winbar = {},

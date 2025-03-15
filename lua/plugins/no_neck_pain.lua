@@ -1,8 +1,9 @@
-return { -----------------------------------------------------------------------
+------------------------------------------------------------------------------80
+return {
 	'shortcuts/no-neck-pain.nvim',
 	config = true,
-	opts = {
-		minSideBufferWidth = 0,
+	opts = { -- buggy width with vsplit, toggleterm opens right of right buffer
+		minSideBufferWidth = 1, -- TODO: temp
 		width = _G.arista and 94 or 89,
 		autocmds = {
 			enableOnVimEnter = true,

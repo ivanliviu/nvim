@@ -1,28 +1,60 @@
--- update bazecor
--- use colors based on distance from purple and eachother:
--- chartreuse > yellow/green > orange/spring_green >
--- > red/cyan > rose/azure > magenta/blue
-return {
-	fg = '#ebf7c7', -- 75, 3/4, 7/8
-	bg = '#1c1828', -- 255, 1/4, 1/8
-	black = '#0e0c14', -- 255, 1/4, 1/16
-	white = '#edebf3', -- 255, 1/4, 15/16
-	selection = '#383050', -- 255, 1/8, 1/4
-	comment = '#b7afcf', -- 255, 1/4, 3/4
-	menu = '#2d2a36', -- 255, 1/8, 3/16
-	visual = '#3c3848', -- 255, 1/8, 1/4
-	nontext = '#3c3848', -- 255, 1/8, 1/4
+local main_hue = 255
 
-	violet = '#9f80ff', -- 255, 1, 3/4
-	magenta = '#df80ff', -- 285, 3/4, 3/4
-	rose = '#ff80df', -- 315, 1, 3/4
-	red = '#ff809f', -- 345, 1, 3/4
-	orange = '#ff9f80', -- 15, 1, 3/4
-	yellow = '#ffdf80', -- 45, 1, 3/4
-	chartreuse = '#dfff80', -- 75, 1, 3/4
-	green = '#9fff80', -- 105, 1, 3/4
-	spring_green = '#80ff9f', -- 135, 1, 3/4
-	cyan = '#80ffdf', -- 165, 1, 3/4
-	azure = '#80dfff', -- 195, 1, 3/4
-	blue = '#809fff', -- 225, 1, 3/4
+local function hex(h, s, l)
+	local c = (1 - math.abs(2 * l - 1)) * s
+	local x = c * (1 - math.abs(h / 60 % 2 - 1))
+	local m = l - c * 0.5
+	local r, g, b
+	if h < 60 then
+		r, g, b = c, x, 0
+	elseif h < 120 then
+		r, g, b = x, c, 0
+	elseif h < 180 then
+		r, g, b = 0, c, x
+	elseif h < 240 then
+		r, g, b = 0, x, c
+	elseif h < 300 then
+		r, g, b = x, 0, c
+	else
+		r, g, b = c, 0, x
+	end
+	return string.format(
+		'#%02x%02x%02x',
+		(r + m) * 255,
+		(g + m) * 255,
+		(b + m) * 255
+	)
+end
+
+local colors = {}
+for i = 0, 11 do
+	colors[i + 1] = hex((main_hue + 30 * i) % 360, 0.875, 0.75)
+end
+
+local gradient = {}
+local lights = { 0.125, 0.25, 0.5, 0.75, 0.875 }
+for i = 1, #lights do
+	gradient[i] = hex(main_hue, 0.25, lights[i])
+end
+
+local function closest(hue)
+	return colors[math.floor((hue - main_hue) % 360 / 30) % 12 + 1]
+end
+
+return {
+	fg = hex((main_hue + 180) % 360, 0.75, 0.875),
+	gradient = gradient,
+	colors = colors,
+	red = closest(0),
+	orange = closest(30),
+	yellow = closest(60),
+	chartreuse = closest(90),
+	green = closest(120),
+	spring_green = closest(150),
+	cyan = closest(180),
+	azure = closest(210),
+	blue = closest(240),
+	violet = closest(270),
+	magenta = closest(300),
+	rose = closest(330),
 }

@@ -14,3 +14,12 @@ if _G.arista then
 		command = 'setfiletype cpp',
 	})
 end
+
+-- TODO: be an order of operation issue
+vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
+	pattern = { 'no-neck-pain*' },
+	callback = function()
+		vim.wo.statusline = ''
+		vim.wo.winbar = ''
+	end,
+})
