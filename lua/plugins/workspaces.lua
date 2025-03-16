@@ -26,6 +26,7 @@ return {
 	},
 	config = function()
 		-- local workspaces = require 'workspaces'
+		-- workspaces.add('~/Documents/vault/git/ki', 'ki')
 		-- workspaces.add('~/Documents', 'home')
 		-- workspaces.add('~/Documents/vault/git/neovim', 'neovim')
 		-- workspaces.add('~/Documents/vault/git/sah', 'sah')

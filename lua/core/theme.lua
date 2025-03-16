@@ -41,7 +41,7 @@ local groups = {
 	Character = { fg = p.colors[7] },
 	Comment = { fg = clear, italic = true },
 	Constant = { fg = p.colors[7] },
-	Normal = { fg = white, bg = nil },
+	Normal = { fg = fg, bg = nil },
 	NormalFloat = { fg = white, bg = muted },
 	Number = { fg = p.colors[7] },
 	String = { fg = p.colors[7] },
@@ -98,7 +98,7 @@ local groups = {
 
 	ErrorMsg = { fg = colors.rose },
 	VertSplit = { fg = black },
-	WinSeparator = { fg = black },
+	WinSeparator = { fg = colors.gradient[3] },
 	Folded = { fg = colors.gradient[2] },
 	FoldColumn = {},
 	Search = { fg = black, bg = colors.orange },

@@ -20,16 +20,16 @@ return {
 			theme = {
 				normal = {
 					a = { fg = black, bg = normal, gui = 'bold' },
-					b = { fg = normal, bg = black },
+					b = { fg = normal, bg = colors.gradient[2] },
 					c = { fg = white, bg = black },
 				},
 				command = {
 					a = { fg = black, bg = command, gui = 'bold' },
-					b = { fg = command, bg = black },
+					b = { fg = command, bg = colors.gradient[2] },
 				},
 				visual = {
 					a = { fg = black, bg = visual, gui = 'bold' },
-					b = { fg = visual, bg = black },
+					b = { fg = visual, bg = colors.gradient[2] },
 				},
 				inactive = {
 					a = { fg = white, bg = inactive, gui = 'bold' },
@@ -37,12 +37,12 @@ return {
 				},
 				replace = {
 					a = { fg = black, bg = replace, gui = 'bold' },
-					b = { fg = replace, bg = black },
+					b = { fg = replace, bg = colors.gradient[2] },
 					c = { fg = white, bg = black },
 				},
 				insert = {
 					a = { fg = black, bg = insert, gui = 'bold' },
-					b = { fg = insert, bg = black },
+					b = { fg = insert, bg = colors.gradient[2] },
 					c = { fg = white, bg = black },
 				},
 			},
