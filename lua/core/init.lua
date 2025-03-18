@@ -1,4 +1,4 @@
-require 'core.theme' -- order?
+require 'core.theme' -- still doesn't run fast enough if lua autotriggers
 
 require 'core.options'
 

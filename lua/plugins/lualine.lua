@@ -52,6 +52,7 @@ return {
 			-- consider consistent spacing, like with location
 			lualine_a = { 'mode' },
 			lualine_b = { 'branch', 'diff', 'diagnostics' },
+			-- _c has more priority than _b, _b content is not guaranteed
 			lualine_c = { 'filename', 'filesize' },
 			lualine_x = { 'searchcount', 'selectioncount', 'filetype' },
 			lualine_y = { 'progress' },

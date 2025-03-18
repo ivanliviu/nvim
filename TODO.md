@@ -1,3 +1,11 @@
+# README:
+deps: `git`, `make`, `unzip`, `gcc`, ripgrep xclip curl, nerd font
+Paths: `$XDG_CONFIG_HOME/nvim`, `~/.config/nvim`
+Neovim files also in `~/.local/share/nvim`
+Below you can find OS specific install instructions for Neovim and dependencies.
+After installing all the dependencies continue with the [Install Kickstart](#Install-Kickstart) step.
+sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/
+
 nvim <dir> => pwd = dir
 update bazecor, st (reproduce lua code) colors
 culoare mod din lualine pe cursor, tabline

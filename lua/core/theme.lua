@@ -81,7 +81,7 @@ local groups = {
 	SignColumn = { bg = nil },
 
 	Conceal = { fg = colors.gradient[2] },
-	CursorColumn = { bg = black },
+	CursorColumn = { bg = colors.gradient[2] },
 	CursorLine = { bg = colors.gradient[2] },
 	ColorColumn = { bg = colors.gradient[2] },
 

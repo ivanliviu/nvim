@@ -1,3 +1,5 @@
+-- TODO: https://github.com/yetone/avante.nvim
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -40,6 +42,9 @@ require('lazy').setup {
 	require 'plugins.cmp',
 	require 'plugins.mini', -- chosen...?
 	require 'plugins.treesitter',
+	-- extras:
+	require 'plugins.lint',
+	require 'plugins.dap',
 	{
 		'folke/noice.nvim',
 		event = 'VeryLazy',
@@ -76,5 +81,4 @@ require('lazy').setup {
 		end,
 	},
 	not _G.arista and require 'plugins.trim' or nil,
-	-- TODO: 'github/copilot.vim'
 }
