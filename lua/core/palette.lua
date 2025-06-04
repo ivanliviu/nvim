@@ -1,3 +1,5 @@
+-- TODO: update bazecor, st palette
+
 local main_hue = 255
 
 local function hex(h, s, l)
@@ -42,6 +44,7 @@ local function closest(hue)
 end
 
 return {
+	-- TODO: universal hue wrap - closest, fg
 	fg = hex((main_hue + 180) % 360, 0.75, 0.875),
 	gradient = gradient,
 	colors = colors,
@@ -57,4 +60,24 @@ return {
 	violet = closest(270),
 	magenta = closest(300),
 	rose = closest(330),
+
+	-- TODO:
+	bg = gradient[1],
+	selection = gradient[2],
+	comment = gradient[4],
+	purple = closest(270),
+	pink = closest(300),
+	bright_red = closest(330),
+	bright_green = closest(90),
+	bright_yellow = closest(30),
+	bright_blue = closest(210),
+	bright_magenta = closest(270),
+	bright_cyan = closest(120),
+	bright_white = gradient[5],
+	menu = gradient[2],
+	visual = gradient[2],
+	gutter_fg = gradient[4],
+	nontext = gradient[1],
+	white = gradient[5],
+	black = gradient[1],
 }

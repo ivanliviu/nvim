@@ -1,3 +1,5 @@
+-- TODO: search should include . files, maybe not build etc.
+-- TODO: learn bulk find, replace, edit, quickfix lists, etc.
 return {
 	'nvim-telescope/telescope.nvim',
 	event = 'VimEnter',

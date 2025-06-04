@@ -1,3 +1,7 @@
+-- FIX: `tab` doesn't work to autocomplete, `enter` shouldn't still
+-- TODO: LSP: https://www.youtube.com/watch?v=6F3ONwrCxMg
+-- TODO: Null LS: https://www.youtube.com/watch?v=b7OguLuaYvE
+-- TODO: https://www.youtube.com/watch?v=GuIcGxYqaQQ
 return {
 	'neovim/nvim-lspconfig',
 	dependencies = {

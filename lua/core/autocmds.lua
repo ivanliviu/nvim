@@ -8,13 +8,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
-if _G.arista then
-	vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-		pattern = { '*.tac', '*.tin', '*.itin', '*.arx' },
-		command = 'setfiletype cpp',
-	})
-end
-
 -- TODO: be an order of operation issue
 vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
 	pattern = { 'no-neck-pain*' },
@@ -23,3 +16,10 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
 		vim.wo.winbar = ''
 	end,
 })
+
+if _G.arista then
+	vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+		pattern = { '*.tac', '*.tin', '*.itin', '*.arx' },
+		command = 'setfiletype cpp',
+	})
+end

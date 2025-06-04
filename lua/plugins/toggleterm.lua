@@ -1,7 +1,8 @@
+-- TODO: multiple terms
+-- TODO: bind terminal to its window / buffers always in window 1
 return {
 	'akinsho/toggleterm.nvim', -- fix size, again
 	opts = {
-		-- multiple terms?
 		open_mapping = '<C-\\>', -- why not by default?
 		persist_size = false,
 		size = function() -- func better? when is it called? same for no-neck?

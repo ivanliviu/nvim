@@ -1,4 +1,8 @@
 -- TODO: map space to nothing in normal, visual, etc.
+-- TODO: :checkhealth mapping, use and fix
+-- TODO: keymap for o/O<Esc>?
+-- TODO: remap unused keybinds [a-z]->[A-Z]-><C-[a-z]>
+-- TODO: `:Telescope help_tags` `:help vim.opt` `:help option-list` `:help vim.keymap.set()` `:help lua-guide-autocommands` `:help` `<leader>sh <e.g lazy.nvim-plugin>`
 
 function Map(key, value, mode, opts)
 	vim.keymap.set(

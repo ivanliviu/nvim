@@ -10,7 +10,6 @@ local replace = colors.colors[9]
 local inactive = colors.gradient[2]
 
 return {
-	-- shows number of characters instead of number of columns
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = {

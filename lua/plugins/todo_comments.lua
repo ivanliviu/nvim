@@ -1,17 +1,23 @@
+local palette = require 'core.palette'
+
 return {
-	'folke/todo-comments.nvim', -- TODO: replace TODO file
-	-- TODO: sign_priority
-	-- FIX:
-	-- HACK:
-	-- WARN:
-	-- PERF: (performance)
-	-- NOTE:
-	-- TEST:
-	event = 'VimEnter',
+	'folke/todo-comments.nvim',
+	-- TODO: sign_priority, other settings
+	event = 'VeryLazy',
 	dependencies = { 'nvim-lua/plenary.nvim' },
-	opts = {},
-	config = function()
-		require('todo-comments').setup()
+	opts = {
+		keywords = {
+			FIX = { icon = '❌', color = palette.red },
+			HACK = { icon = '🔥', color = palette.orange },
+			NOTE = { icon = '🗒️', color = palette.chartreuse },
+			PERF = { icon = '⏩', color = palette.cyan },
+			TEST = { icon = '🧪', color = palette.green },
+			TODO = { icon = '📝', color = palette.blue },
+			WARN = { icon = '⚠️', color = palette.yellow },
+		},
+	},
+	config = function(_, opts)
+		require('todo-comments').setup(opts)
 		vim.keymap.set('n', ']t', function()
 			require('todo-comments').jump_next()
 		end, { desc = 'Next todo comment' })

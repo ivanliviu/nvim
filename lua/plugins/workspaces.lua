@@ -1,3 +1,5 @@
+-- TODO: nvim <dir> => pwd = dir or something
+-- TODO: (unrelated) create zsh shorcuts for Documents, sahbox, vin config, etc.
 return {
 	'natecraddock/workspaces.nvim', -- use open(_pre) hook to close current workspaces/buffers if needed
 	opts = {
