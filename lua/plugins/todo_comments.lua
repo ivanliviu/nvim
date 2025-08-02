@@ -32,4 +32,5 @@ return {
 -- :TodoTelescope [cwd=~/projects/foobar] [keywords=TODO,FIX]
 -- :Trouble todo [filter = {tag = {TODO,FIX,FIXME}}] (trouble.nvim)
 -- :TodoLocList (uses the location list)
--- :TodoQuickFix (uses the quickfix list)
+-- :TodoQuickFix (uses the quickfix list) - opens in corner
+-- C-q - quick fix list opens file in new window if main is Oil(tree)

@@ -6,13 +6,14 @@ vim.g.python_recommended_style = 0
 vim.opt.breakindent = true
 vim.opt.colorcolumn = '81'
 vim.opt.cursorline = true
+vim.opt.equalalways = false -- never auto-resize splits, suggested by GPT
 vim.opt.expandtab = _G.arista
 vim.opt.ignorecase = true
 vim.opt.inccommand = 'split'
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = 'a'
-vim.opt.number = true
+vim.opt.number = true -- TODO: bugged on row larger than page with 4 digits
 vim.opt.numberwidth = 6
 -- also depending on vim width (no-neck-pain takes up even number of spaces)
 -- st should be small enough to fix exactly two max size buffers

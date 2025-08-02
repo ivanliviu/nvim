@@ -1,5 +1,6 @@
 -- TODO: multiple terms
 -- TODO: bind terminal to its window / buffers always in window 1
+
 return {
 	'akinsho/toggleterm.nvim', -- fix size, again
 	opts = {
