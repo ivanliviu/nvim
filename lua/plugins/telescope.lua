@@ -66,7 +66,12 @@ return {
 			{ desc = '[S]earch [K]eymaps' }
 		)
 		-- FIX: fullscreening with this open causes error
-		vim.keymap.set('n', '<leader>sf', builtin.find_files)
+		vim.keymap.set('n', '<leader>sf', function()
+			require('telescope.builtin').find_files {
+				hidden = true,
+				-- no_ignore = true, -- also ignore .gitignore rules
+			}
+		end)
 		vim.keymap.set(
 			'n',
 			'<leader>ss',

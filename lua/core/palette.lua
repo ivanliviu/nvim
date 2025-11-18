@@ -30,7 +30,7 @@ end
 
 local colors = {}
 for i = 0, 11 do
-	colors[i + 1] = hex((main_hue + 30 * i) % 360, 0.875, 0.75)
+	colors[i + 1] = hex((main_hue + 30 * i) % 360, 1, 0.75)
 end
 
 local gradient = {}

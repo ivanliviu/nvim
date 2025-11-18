@@ -58,7 +58,14 @@ return {
 			lualine_z = { '%4l:%-3v' },
 		},
 		tabline = {
-			lualine_a = { 'buffers' },
+			lualine_a = {
+				{
+					'buffers',
+					show_filename_only = false,
+					hide_filename_extension = true,
+					-- max_length = vim.o.columns * 2 / 3,
+				},
+			},
 			lualine_b = {},
 			-- lualine_c = { '%=', 'buffers' },
 			lualine_x = {},

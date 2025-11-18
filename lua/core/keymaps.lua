@@ -1,7 +1,3 @@
--- TODO: map space to nothing in normal, visual, etc.
--- TODO: :checkhealth mapping, use and fix
--- TODO: keymap for o/O<Esc>?
--- TODO: remap unused keybinds [a-z]->[A-Z]-><C-[a-z]>
 -- TODO: `:Telescope help_tags` `:help vim.opt` `:help option-list` `:help vim.keymap.set()` `:help lua-guide-autocommands` `:help` `<leader>sh <e.g lazy.nvim-plugin>`
 
 function Map(key, value, mode, opts)
@@ -30,11 +26,12 @@ function Map_leader_cmd(key, value, mode)
 end
 
 Map('<Esc><Esc>', '<C-\\><C-n>', 't')
+Map('<leader>', '<nop>', { 'n', 'v', 'x', 'o', 's' })
 for _, key in ipairs { 'C', 'S', 'X', 'c', 's', 'x' } do
 	Map(key, '"_' .. key)
 end
 
-Map_cmd('<C-h>', 'che')
+Map_cmd('<C-h>', 'che') -- TODO: fix issues
 Map_cmd('<Esc>', 'noh')
 Map_cmd('<S-Tab>', 'bp')
 Map_cmd('<Tab>', 'bn')
@@ -43,13 +40,17 @@ Map_cmd('Q', 'qa')
 Map_expr('j', "v:count == 0 ? 'gj' : 'j'", { 'n', 'v' })
 Map_expr('k', "v:count == 0 ? 'gk' : 'k'", { 'n', 'v' })
 
+Map_leader('o', 'm`o<Esc>``')
+Map_leader('O', 'm`O<Esc>``')
 Map_leader('d', vim.diagnostic.setloclist)
 for _, key in ipairs { 'h', 'j', 'k', 'l' } do
 	Map_leader(key, '<C-w>' .. key)
 end
 
-Map_leader_cmd('<Tab>', 'b#')
+-- Map_leader_cmd('<Tab>', 'b#')
+Map_leader_cmd('<Tab>', 'retab!')
 Map_leader_cmd('q', 'clo')
+-- TODO: when closing buffer in vim, select next one
 Map_leader_cmd('w', 'Bdelete')
 
 local main_tab = nil
@@ -95,3 +96,20 @@ local function toggle_tabs()
 end
 
 Map_leader('t', toggle_tabs)
+
+-- TODO: remap unused keybinds [a-z]->[A-Z]-><C-[a-z]>
+
+Map_leader('ow', function()
+	local current = vim.api.nvim_get_current_buf()
+	for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+		if bufnr ~= current and vim.api.nvim_buf_is_loaded(bufnr) then
+			local bt = vim.bo[bufnr].buftype
+			local modified = vim.bo[bufnr].modified
+
+			-- only touch normal file buffers
+			if bt == '' and not modified then
+				pcall(vim.api.nvim_buf_delete, bufnr, { force = false })
+			end
+		end
+	end
+end)

@@ -18,8 +18,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
+	rocks = { enabled = false },
 	require 'plugins.auto_save',
-	require 'plugins.avante',
+	-- require 'plugins.avante',
 	require 'plugins.bufdelete',
 	require 'plugins.comment',
 	require 'plugins.gitsigns',

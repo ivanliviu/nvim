@@ -1,19 +1,12 @@
+-- TODO:
+-- make it possible to show at least the function that includes the current line
+-- no "special" buffers in file windows, no file buffers in "special" windows
+-- i.e. special windows really shouldn't be able to Tab to a different buffer
+-- mappings should run in the window where they're relevant
+
 vim.api.nvim_create_autocmd('TextYankPost', {
-	group = vim.api.nvim_create_augroup(
-		'kickstart-highlight-yank',
-		{ clear = true }
-	),
 	callback = function()
 		vim.highlight.on_yank()
-	end,
-})
-
--- TODO: be an order of operation issue
-vim.api.nvim_create_autocmd({ 'BufWinEnter', 'WinEnter' }, {
-	pattern = { 'no-neck-pain*' },
-	callback = function()
-		vim.wo.statusline = ''
-		vim.wo.winbar = ''
 	end,
 })
 
