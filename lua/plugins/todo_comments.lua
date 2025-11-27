@@ -1,5 +1,6 @@
 local palette = require 'core.palette'
 
+-- TODO: remove TODO files/dirs; spread in files and collect with tooling
 return {
 	'folke/todo-comments.nvim',
 	-- TODO: sign_priority, other settings

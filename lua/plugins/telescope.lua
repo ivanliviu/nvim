@@ -1,5 +1,25 @@
 -- TODO: search should include . files, maybe not build etc.
 -- TODO: learn bulk find, replace, edit, quickfix lists, etc.
+
+local extensions = { 'py', 'lua', 'rs', 'md', 'cpp', 'hpp', 'txt' }
+local function rg_find_cmd(exts)
+	-- PERF: vs ripgrep
+	local brace = '*.{' .. table.concat(exts, ',') .. '}'
+	return { 'rg', '--files', '--glob', brace }
+end
+-- local function fd_find_cmd(exts)
+--  -- FIX: no results
+-- 	local cmd = { 'fd', '--type', 'f' } -- you can add '--hidden' here if you want
+-- 	for _, ext in ipairs(exts) do
+-- 		table.insert(cmd, '--extension')
+-- 		table.insert(cmd, ext)
+-- 	end
+-- 	return cmd
+-- end
+local function extensions_glob(exts)
+	return '*.{' .. table.concat(exts, ',') .. '}'
+end
+
 return {
 	'nvim-telescope/telescope.nvim',
 	event = 'VimEnter',
@@ -69,22 +89,28 @@ return {
 		vim.keymap.set('n', '<leader>sf', function()
 			require('telescope.builtin').find_files {
 				hidden = true,
-				-- no_ignore = true, -- also ignore .gitignore rules
+				find_command = rg_find_cmd(extensions),
 			}
 		end)
-		vim.keymap.set(
-			'n',
-			'<leader>ss',
-			builtin.builtin,
-			{ desc = '[S]earch [S]elect Telescope' }
-		)
+		-- vim.keymap.set(
+		-- 	'n',
+		-- 	'<leader>ss', -- FIX: this shadows substituting a row
+		-- 	builtin.builtin,
+		-- 	{ desc = '[S]earch [S]elect Telescope' }
+		-- )
 		vim.keymap.set(
 			'n',
 			'<leader>sw',
 			builtin.grep_string,
 			{ desc = '[S]earch current [W]ord' }
 		)
-		vim.keymap.set('n', '<leader>sg', builtin.live_grep)
+		vim.keymap.set('n', '<leader>sg', function()
+			builtin.live_grep {
+				additional_args = function(_)
+					return { '--glob', extensions_glob(extensions) }
+				end,
+			}
+		end)
 		vim.keymap.set(
 			'n',
 			'<leader>sd',

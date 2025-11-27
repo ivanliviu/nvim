@@ -180,7 +180,7 @@ local groups = {
 	['@markup.emphasis'] = { fg = colors.yellow, italic = true }, -- italic
 	['@markup.underline'] = { fg = colors.orange },
 	['@markup.heading'] = { fg = colors.pink, bold = true }, -- title
-	['@markup.raw'] = { fg = colors.yellow }, -- inline code
+	['@markup.raw'] = { fg = colors.chartreuse }, -- inline code
 	['@markup.link.url'] = { fg = colors.yellow, italic = true }, -- urls
 	['@markup.link'] = { fg = colors.orange, bold = true },
 
@@ -239,7 +239,7 @@ local groups = {
 	markdownBlockquote = { fg = colors.chartreuse, italic = true },
 	markdownBold = { fg = colors.orange, bold = true },
 	markdownCode = { fg = colors.chartreuse },
-	markdownCodeBlock = { fg = colors.orange },
+	markdownCodeBlock = { fg = colors.chartreuse },
 	markdownCodeDelimiter = { fg = colors.red },
 	markdownH1 = { link = 'rainbow1' },
 	markdownH2 = { link = 'rainbow2' },
